@@ -15,3 +15,9 @@ docker-compose up
 heroku container:push web
 heroku container:release web
 ```
+
+## Resolving ownership issues
+
+```bash
+sudo chown -R $USER:$USER .
+```
