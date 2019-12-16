@@ -48,7 +48,7 @@
   <div class="tile is-ancestor has-text-centered wrap">
     <% @projects.each do |project| %>
       <div class="tile is-parent is-4">
-        <%= link_to user_project_path(current_user, project), class: "tile" do %>
+        <%= link_to user_project_path(@user, project), class: "tile" do %>
           <article class="tile is-child box">
             <p class="title"><%= project.title %></p>
             <figure class="image is-4by3">
