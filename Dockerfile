@@ -6,6 +6,10 @@ RUN apt-get update &&\
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && /usr/sbin/locale-gen &&\
     rm -rf /var/lib/apt/lists/*
 ENV LANG en_US.UTF-8
+
+# Fix Heroku sass bug
+ENV BUNDLE_BUILD__SASSC=--disable-march-tune-native
+
 RUN apt-get update -qq && apt-get install -y postgresql-client
 # https://github.com/nodesource/distributions#installation-instructions
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
