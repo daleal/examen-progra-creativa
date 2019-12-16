@@ -1,0 +1,41 @@
+<section class="hero is-info welcome is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Nuevo Proyecto!
+      </h1>
+      <h2 class="subtitle">
+        Añade un proyecto a tu colección!
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="info-tiles">
+  <div class="tile is-ancestor has-text-centered">
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <%= form_for [current_user, @project] do |f| %>
+          <div class="field">
+            <div class="control">
+              <%= f.text_field :title, autofocus: true, class: "input", placeholder: "Título" %>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <%= f.text_area :code, class: "textarea has-fixed-size", placeholder: "Código", rows: "20" %>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <div class="actions">
+                <%= f.submit "Crear Proyecto!", class: "button is-primary" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </section>
+    </div>
+  </div>
+</section>

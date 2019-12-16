@@ -19,9 +19,18 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    @project = Project.new
   end
 
   def create
+    @project = Project.new(project_params)
+    current_user.projects.push(@project)
+    if @project.save
+      flash[:success] = "El proyecto ha sido creado con éxito!"
+    else
+      flash[:warning] = "No se ha podido crear el proyecto."
+    end
+    redirect_to user_projects_path(current_user)
   end
 
   def edit
