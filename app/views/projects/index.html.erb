@@ -2,14 +2,14 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        <% if @owner %>
+        <% if @is_owner %>
           Tus Proyectos
         <% else %>
           Proyectos de <%= @user.email.split("@").first %>
         <% end %>
       </h1>
       <h2 class="subtitle">
-        <% if @owner %>
+        <% if @is_owner %>
           Maneja tu colección!
         <% else %>
           Disfruta de su colección!
@@ -27,7 +27,7 @@
         <p class="subtitle"><%= "Proyecto".pluralize(@projects_amount) %></p>
       </article>
     </div>
-    <% if @owner %>
+    <% if @is_owner %>
       <div class="tile is-parent">
         <%= link_to new_user_project_path(current_user), class: "tile" do %>
           <article class="tile is-child box">
