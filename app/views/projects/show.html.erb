@@ -1,0 +1,5 @@
+<h1><%= @project.title %></h1>
+<% if @project.snapshot.attached? %>
+    <img src="<%= (url_for(@project.snapshot))%>">
+<% end %>
+

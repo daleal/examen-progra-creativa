@@ -13,9 +13,12 @@ class ProjectsController < ApplicationController
     @owner = user_signed_in? && current_user.id == @user.id
     @projects = Project.where(user_id: params[:user_id])
     @projects_amount = @projects.length
+    puts "hola"
   end
 
   def show
+    @project = Project.find(params[:id])
+    @user = User.find(@project.user.id)
   end
 
   def new
@@ -45,6 +48,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :code, :user_id)
+    params.require(:project).permit(:title, :code, :user_id, :snapshot)
   end
 end
