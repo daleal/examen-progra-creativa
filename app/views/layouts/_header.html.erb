@@ -14,6 +14,9 @@
     <div id="navMenu" class="navbar-menu">
       <div class="navbar-start">
         <% if user_signed_in? %>
+          <%= link_to user_projects_path(current_user), class: "navbar-item" do %>
+            Mis Proyectos
+          <% end %>
           <%= link_to edit_user_registration_path, class: "navbar-item" do %>
             Mis datos
           <% end %>

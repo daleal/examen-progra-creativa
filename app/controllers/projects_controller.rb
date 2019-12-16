@@ -9,6 +9,10 @@ class ProjectsController < ApplicationController
   end
 
   def index
+    @user = User.find(params[:user_id])
+    @owner = user_signed_in? && current_user.id == @user.id
+    @projects = Project.where(user_id: params[:user_id])
+    @projects_amount = @projects.length
   end
 
   def show

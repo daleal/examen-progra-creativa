@@ -1,43 +1,59 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h1 class="title is-1 has-text-centered heading">Editar Perfil de <%= resource_name.to_s.humanize %></h1>
+
+<br><br>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="control">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input", placeholder: "Mail" %>
+    </div>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+  <br>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <div class="control">
+      <%= f.password_field :password, autocomplete: "new-password", class: "input", placeholder: "Nueva Contraseña" %>
+      <% if @minimum_password_length %>
+        <em><%= @minimum_password_length %> caracteres mínimo</em>
+      <% end %>
+      <i>(dejar en blanco si no se desea cambiar)</i>
+    </div>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <div class="control">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input", placeholder: "Confirmar Nueva Contraseña" %>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="field">
+    <div class="control">
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "input", placeholder: "Contraseña Actual" %>
+      <i>La contraseña actual es necesaria para efectuar cualquier cambio</i>
+    </div>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Actualizar Datos", class: "button is-primary" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<br><br><br>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<h2 class="title is-2">Cerrar Cuenta</h2>
 
-<%= link_to "Back", :back %>
+<p>
+  Puedes cerrar la cuenta en cualquier momento! Todos tus proyectos serán
+  eliminados y no se podrán recuperar...
+</p>
+
+<br>
+
+<%= button_to "Cerrar Cuenta", registration_path(resource_name), data: { confirm: "Seguro que deseas cerrar tu cuenta?" }, method: :delete, class: "button is-primary" %>
+<br>
+<%= link_to "Volver", :back, class: "button" %>
