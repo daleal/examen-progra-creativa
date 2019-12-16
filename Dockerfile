@@ -1,4 +1,5 @@
 FROM ruby:2.6-rc
+
 RUN apt-get update &&\
     # add support to unicode chars from keyboard: ç,ã,ô:
     apt-get install -y locales &&\
@@ -21,6 +22,9 @@ COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
+
+RUN useradd -m myuser
+USER myuser
 
 # Start the main process.
 CMD ["puma", "-C", "config/puma.rb"]
