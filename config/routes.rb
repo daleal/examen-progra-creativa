@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :projects
   end
 
-  get 'projects/index', to: 'projects#index'
+  get 'projects/catalog', to: 'projects#catalog'
 
-  root 'projects#index'
+  root 'projects#catalog'
 end
