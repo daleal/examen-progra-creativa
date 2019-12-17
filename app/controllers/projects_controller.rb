@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  skip_before_action :authenticate_user!, only: [:catalog, :index, :show]
+  skip_before_action :authenticate_user!, only: %i[catalog index show]
+  before_action :access, only: %i[new create edit update destroy]
 
   def catalog
     @projects = Project.all
@@ -10,7 +11,7 @@ class ProjectsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @owner = user_signed_in? && current_user.id == @user.id
+    @is_owner = user_signed_in? && current_user.id == @user.id
     @projects = Project.where(user_id: params[:user_id])
     @projects_amount = @projects.length
     puts "hola"
@@ -49,5 +50,12 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:title, :code, :user_id, :snapshot)
+  end
+
+  def access
+    if current_user.id != params[:user_id].to_i
+      flash[:warning] = "No tienes permiso para ejecutar esta acción."
+      redirect_back fallback_location: root_path
+    end
   end
 end
