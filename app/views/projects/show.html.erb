@@ -4,7 +4,7 @@
   <div class="tile is-ancestor">
     <div class="tile is-parent">
       <article class="tile is-child box">
-        <%= @project.code %>
+        <p class="box-code"><%= @project.code.html_safe %></p>
       </article>
     </div>
   </div>
@@ -13,3 +13,7 @@
 <% if @is_owner %>
   <%= link_to "Eliminar", user_project_path(@user, @project), method: :delete, data: { confirm: '¿Estás seguro?' } %>
 <% end %>
+
+<div id="sketch-holder">
+  <script><%= (@project.code).html_safe %></script>
+</div>
