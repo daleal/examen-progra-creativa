@@ -1,9 +1,14 @@
-.box-code {
+.code-box {
   white-space: pre-wrap;
   padding: 1em;
   tab-size: 4;
   font-family: 'Monaco','Source Code Pro','Consolas','monospace';
   font-size: 12pt;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
 }
 
 #sketch-canvas {
