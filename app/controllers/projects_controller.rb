@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @user = User.find(@project.user.id)
+    @is_owner = user_signed_in? && current_user.id == @user.id
   end
 
   def new
@@ -29,9 +30,9 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     current_user.projects.push(@project)
     if @project.save
-      flash[:success] = "El proyecto ha sido creado con éxito!"
+      flash[:success] = 'El proyecto ha sido creado con éxito!'
     else
-      flash[:warning] = "No se ha podido crear el proyecto."
+      flash[:warning] = 'No se ha podido crear el proyecto.'
     end
     redirect_to user_projects_path(current_user)
   end
@@ -43,6 +44,10 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    flash[:success] = 'Se ha eliminado el proyecto correctamente.'
+    redirect_to user_projects_path(current_user)
   end
 
   private
@@ -53,7 +58,7 @@ class ProjectsController < ApplicationController
 
   def access
     if current_user.id != params[:user_id].to_i
-      flash[:warning] = "No tienes permiso para ejecutar esta acción."
+      flash[:warning] = 'No tienes permiso para ejecutar esta acción.'
       redirect_back fallback_location: root_path
     end
   end
