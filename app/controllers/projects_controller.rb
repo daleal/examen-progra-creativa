@@ -14,7 +14,6 @@ class ProjectsController < ApplicationController
     @is_owner = user_signed_in? && current_user.id == @user.id
     @projects = Project.where(user_id: params[:user_id])
     @projects_amount = @projects.length
-    puts "hola"
   end
 
   def show
