@@ -1,5 +1,11 @@
-<h1><%= @project.title %></h1>
-<% if @project.snapshot.attached? %>
-    <img src="<%= (url_for(@project.snapshot))%>">
-<% end %>
+<p class="title"><%= @project.title %></p>
+<section class="info-tiles">
+    <div class="tile is-ancestor has-text-centered wrap">
+        <div class="tile is-parent is-4">
+            <article class="is-child box">
+                <%= @project.code %>
+            </article>
+        </div>
+    </div>
+</section>
 
