@@ -23,6 +23,12 @@
           </div>
           <div class="field">
             <div class="control">
+              <%= f.label "Snapshot" %>
+              <%= f.file_field :snapshot%>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
               <%= f.text_area :code, class: "textarea has-fixed-size", placeholder: "Código", rows: "20" %>
             </div>
           </div>

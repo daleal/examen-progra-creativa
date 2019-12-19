@@ -1,0 +1,12 @@
+<p class="title"><%= @project.title %></p>
+<i>by <%= @project.user.email %></i>
+<section class="info-tiles">
+    <div class="tile is-ancestor has-text-centered wrap">
+        <div class="tile is-parent is-4">
+            <article class="is-child box">
+                <%= @project.code %>
+            </article>
+        </div>
+    </div>
+</section>
+

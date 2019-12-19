@@ -17,6 +17,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @project = Project.find(params[:id])
+    @user = User.find(@project.user.id)
   end
 
   def new
@@ -46,7 +48,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title, :code, :user_id)
+    params.require(:project).permit(:title, :code, :user_id, :snapshot)
   end
 
   def access
