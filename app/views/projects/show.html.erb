@@ -1,0 +1,35 @@
+<p class="title"><%= @project.title %></p>
+<i>by <%= @user.username %></i>
+
+<section class="info-tiles">
+  <div class="tile is-ancestor">
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <div id="sketch-holder" class="center-content">
+          <script><%= render_project(@project) %></script>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="info-tiles">
+  <div class="tile is-ancestor">
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p class="code-box" id="code-box"><%= @project.code %></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="buttons are-medium">
+  <% if @is_owner %>
+    <%= link_to "Editar", edit_user_project_path(@user, @project), class: "button is-warning" %>
+    <%= link_to "Eliminar", user_project_path(@user, @project), method: :delete, data: { confirm: '¿Estás seguro?' }, class: "button is-danger" %>
+  <% else %>
+    <%= link_to "Más de #{@user.username}", user_projects_path(@user), class: "button is-primary" %>
+  <% end %>
+
+  <%= link_to "Volver", :back, class: "button is-info" %>
+</div>

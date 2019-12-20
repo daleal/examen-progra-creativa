@@ -1,0 +1,41 @@
+<!-- START NAV -->
+<nav class="navbar is-white">
+  <div class="container">
+    <div class="navbar-brand">
+      <%= link_to root_path, class: "navbar-item brand-text" do %>
+        Portafolio!
+      <% end %>
+      <div class="navbar-burger burger" data-target="navMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div id="navMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <% if user_signed_in? %>
+          <%= link_to user_projects_path(current_user), class: "navbar-item" do %>
+            Mis Proyectos
+          <% end %>
+          <%= link_to edit_user_registration_path, class: "navbar-item" do %>
+            Mis datos
+          <% end %>
+          <%= link_to destroy_user_session_path, class: "navbar-item" do %>
+            Cerrar sesión
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path, class: "navbar-item" do %>
+            Iniciar sesión
+          <% end %>
+          <%= link_to new_user_registration_path, class: "navbar-item" do %>
+            Registrarse
+          <% end %>
+        <% end %>
+
+        <%= link_to "Acerca del proyecto", about_path, class: "navbar-item" %>
+
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- END NAV -->
