@@ -38,9 +38,17 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @project = Project.find(params[:id])
   end
 
   def update
+    @project = Project.find(params[:id])
+    if @project.update_attributes(project_params)
+      flash[:success] = 'Se ha editado el proyecto correctamente.'
+    else
+      flash[:warning] = 'No se ha podido editar el proyecto.'
+    end
+    redirect_to user_project_path(@project)
   end
 
   def destroy
