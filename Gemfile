@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'cloudinary',              '1.13.1'
 gem 'coffee-rails',            '4.2.2'
 gem 'devise',                  '4.7.1'
 gem 'jbuilder',                '2.7.0'
