@@ -1,8 +1,10 @@
 module ProjectsHelper
   def render_project(project)
     data = project.code.split("\n")
+    found = false
     data.each_with_index do |instr, index|
       if instr.include? 'function setup()'
+        found = true
         data.insert(index + 1, "\tcanvas.parent('sketch-holder');")
         data.insert(
           index + 1,
@@ -10,6 +12,15 @@ module ProjectsHelper
         )
         break
       end
+    end
+    unless found
+      setup = [
+        'function setup() {',
+        "\tlet canvas = createCanvas(REAL_CANVAS_S, REAL_CANVAS_S);",
+        "\tcanvas.parent('sketch-holder');",
+        '}'
+      ]
+      data = setup + data
     end
     size = 'let REAL_CANVAS_S = ' \
       'document.getElementById("sketch-holder").offsetWidth > 1200 ' \
