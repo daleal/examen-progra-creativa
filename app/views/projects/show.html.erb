@@ -1,5 +1,5 @@
 <p class="title"><%= @project.title %></p>
-<i>by <%= @user.email %></i>
+<i>by <%= @user.username %></i>
 
 <section class="info-tiles">
   <div class="tile is-ancestor">
@@ -23,6 +23,13 @@
   </div>
 </section>
 
-<% if @is_owner %>
-  <%= link_to "Eliminar", user_project_path(@user, @project), method: :delete, data: { confirm: '¿Estás seguro?' } %>
-<% end %>
+<div class="buttons are-medium">
+  <% if @is_owner %>
+    <%= link_to "Editar", edit_user_project_path(@user, @project), class: "button is-warning" %>
+    <%= link_to "Eliminar", user_project_path(@user, @project), method: :delete, data: { confirm: '¿Estás seguro?' }, class: "button is-danger" %>
+  <% else %>
+    <%= link_to "Más de #{@user.username}", user_projects_path(@user), class: "button is-primary" %>
+  <% end %>
+
+  <%= link_to "Volver", :back, class: "button is-info" %>
+</div>

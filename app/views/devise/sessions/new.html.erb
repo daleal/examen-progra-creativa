@@ -9,8 +9,6 @@
     </div>
   </div>
 
-  <br>
-
   <div class="field">
     <div class="control">
       <%= f.password_field :password, autocomplete: "current-password", class: "input", placeholder: "Contraseña" %>
@@ -26,11 +24,10 @@
 
   <br>
 
-  <div class="actions">
+  <div class="buttons are-medium">
     <%= f.submit "Iniciar Sesión!", class: "button is-primary" %>
+    <%= render "devise/shared/links" %>
   </div>
 <% end %>
 
 <br>
-
-<%= render "devise/shared/links" %>
