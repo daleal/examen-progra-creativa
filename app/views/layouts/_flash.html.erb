@@ -1,0 +1,24 @@
+<% flash.each do |message_type, message| %>
+  <% if notice %>
+    <% unless notice.blank? %>
+      <div class="notification is-success">
+        <button class="delete"></button>
+        <%= notice %>
+      </div>
+    <% end %>
+  <% elsif alert %>
+    <% unless alert.blank? %>
+      <div class="notification is-warning">
+        <button class="delete"></button>
+        <%= alert %>
+      </div>
+    <% end %>
+  <% else %>
+    <% unless message.blank? %>
+      <div class="notification is-<%= message_type %>">
+        <button class="delete"></button>
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

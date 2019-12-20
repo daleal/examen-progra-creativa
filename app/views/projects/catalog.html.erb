@@ -32,9 +32,11 @@
   <div class="tile is-ancestor has-text-centered wrap">
     <% @projects.each do |project| %>
       <div class="tile is-parent is-4">
-        <%= link_to user_project_path(User.find(project.user_id), project), class: "tile" do %>
+        <% user = User.find(project.user_id) %>
+        <%= link_to user_project_path(user, project), class: "tile" do %>
           <article class="tile is-child box">
             <p class="title"><%= project.title %></p>
+            <p class="subtitle"><%= user.username %></p>
             <figure class="image is-4by3">
               <% if project.snapshot.attached? %>
                 <img src="<%= (url_for(project.snapshot))%>">

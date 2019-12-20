@@ -2,10 +2,10 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Nuevo Proyecto!
+        Editar Proyecto!
       </h1>
       <h2 class="subtitle">
-        Añade un proyecto a tu colección!
+        Te encuentras editando el proyecto <%= @project.title %>
       </h2>
     </div>
   </div>
@@ -29,14 +29,14 @@
           <div class="field">
             <div class="control">
               <%= f.label "Vista Previa" %><br>
-              <%= f.file_field :snapshot, required: true %>
+              <%= f.file_field :snapshot %>
             </div>
           </div>
 
           <div class="field">
             <div class="control">
               <div class="actions">
-                <%= f.submit "Crear Proyecto!", class: "button is-primary" %>
+                <%= f.submit "Editar Proyecto!", class: "button is-primary" %>
               </div>
             </div>
           </div>
