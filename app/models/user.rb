@@ -5,4 +5,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :rememberable, :validatable
   has_many :projects, dependent: :destroy
+  attr_accessor :username
 end

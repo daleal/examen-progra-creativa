@@ -5,7 +5,7 @@
         <% if @is_owner %>
           Tus Proyectos
         <% else %>
-          Proyectos de <%= @user.email.split("@").first %>
+          Proyectos de <%= @user.username %>
         <% end %>
       </h1>
       <h2 class="subtitle">
@@ -51,6 +51,7 @@
         <%= link_to user_project_path(@user, project), class: "tile" do %>
           <article class="tile is-child box">
             <p class="title"><%= project.title %></p>
+            <p class="subtitle"><%= @user.username %></p>
             <figure class="image is-4by3">
               <% if project.snapshot.attached? %>
                 <img src="<%= (url_for(project.snapshot))%>">
