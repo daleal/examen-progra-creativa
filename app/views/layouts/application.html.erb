@@ -22,14 +22,7 @@
 
     <div class="container">
 
-      <% flash.each do |message_type, message| %>
-        <% unless message.blank? %>
-          <div class="notification is-<%= message_type %>">
-            <button class="delete"></button>
-            <%= message %>
-          </div>
-        <% end %>
-      <% end %>
+      <%= render 'layouts/flash' %>
 
       <div class="column is-12">
         <%= yield %>
