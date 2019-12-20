@@ -1,3 +1,18 @@
-// Place all the styles related to the Projects controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.code-box {
+  white-space: pre-wrap;
+  padding: 1em;
+  tab-size: 4;
+  font-family: 'Monaco','Source Code Pro','Consolas','monospace';
+  font-size: 12pt;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+}
+
+#sketch-canvas {
+  display: inline-block;
+  border: 3px solid black;
+  border-radius: 8px;
+}

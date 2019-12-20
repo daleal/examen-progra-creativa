@@ -1,12 +1,28 @@
 <p class="title"><%= @project.title %></p>
-<i>by <%= @project.user.email %></i>
+<i>by <%= @user.email %></i>
+
 <section class="info-tiles">
-    <div class="tile is-ancestor has-text-centered wrap">
-        <div class="tile is-parent is-4">
-            <article class="is-child box">
-                <%= @project.code %>
-            </article>
+  <div class="tile is-ancestor">
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <div id="sketch-holder" class="center-content">
+          <script><%= render_project(@project) %></script>
         </div>
+      </article>
     </div>
+  </div>
 </section>
 
+<section class="info-tiles">
+  <div class="tile is-ancestor">
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p class="code-box" id="code-box"><%= @project.code.html_safe %></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<% if @is_owner %>
+  <%= link_to "Eliminar", user_project_path(@user, @project), method: :delete, data: { confirm: '¿Estás seguro?' } %>
+<% end %>

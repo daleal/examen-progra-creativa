@@ -50,7 +50,7 @@
       <div class="tile is-parent is-4">
         <%= link_to user_project_path(@user, project), class: "tile" do %>
           <article class="tile is-child box">
-            <p class="title"><%= project.title %> <%= project.snapshot.attached? %></p>
+            <p class="title"><%= project.title %></p>
             <figure class="image is-4by3">
               <% if project.snapshot.attached? %>
                 <img src="<%= (url_for(project.snapshot))%>">
