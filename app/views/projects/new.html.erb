@@ -18,18 +18,18 @@
         <%= form_for [current_user, @project] do |f| %>
           <div class="field">
             <div class="control">
-              <%= f.text_field :title, autofocus: true, class: "input", placeholder: "Título" %>
+              <%= f.text_field :title, autofocus: true, class: "input", placeholder: "Título", required: true %>
             </div>
           </div>
           <div class="field">
             <div class="control">
-              <%= f.label "Snapshot" %>
-              <%= f.file_field :snapshot%>
+              <%= f.text_area :code, class: "textarea has-fixed-size", placeholder: "Código", rows: "20", required: true %>
             </div>
           </div>
           <div class="field">
             <div class="control">
-              <%= f.text_area :code, class: "textarea has-fixed-size", placeholder: "Código", rows: "20" %>
+              <%= f.label "Vista Previa" %><br>
+              <%= f.file_field :snapshot, required: true %>
             </div>
           </div>
 
